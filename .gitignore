@@ -1,0 +1,10 @@
+callSoapService.m
+createSoapMessage.m
+parseSoapResponse.m
+
+# Matlab autosave files
+*.m~
+
+# OS generated files
+.DS_Store
+Thumbs.db
