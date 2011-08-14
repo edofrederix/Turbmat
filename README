@@ -40,6 +40,17 @@ User specific programs may be created by simply extending the sample program
 as needed.
 
 
+---- Matlab-Fast-SOAP package ------------------------------------------------
+
+This package comes with a copy of Matlab-Fast-SOAP. Matlab-Fast-SOAP is
+required for performing requests on the database. Turbmat tries to
+automatically detect the location and version of Matlab-Fast-SOAP by looking
+at the content of Turbmat's root path. If Turbmat is able to find
+Matlab-Fast-SOAP, it will include its path, so that the modified
+callSoapService(), createSoapMessage() and parseSoapResponse() functions
+become available. If it cannot find Matlab-Fast-SOAP, it will throw an error.
+
+
 ---- Authentication Token ----------------------------------------------------
 
 While our service is open to anyone, we would like to keep track of who is
