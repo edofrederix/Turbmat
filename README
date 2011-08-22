@@ -1,4 +1,5 @@
 Turbmat - a Matlab library for the JHU Turbulence Database Cluster
+See the end of the file for license conditions.
 
 Written by:
 
@@ -75,3 +76,20 @@ SOAP error occurs during execution of the interface functions, all SOAP
 error information will be display to the Matlab terminal and the execution 
 will be terminated. We do not currently provide a method for explicit error 
 handling/catching.
+
+
+---- License -----------------------------------------------------------------
+
+This file is part of Turbmat.
+
+Turbmat is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+Turbmat is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+Turbmat. If not, see <http://www.gnu.org/licenses/>.
