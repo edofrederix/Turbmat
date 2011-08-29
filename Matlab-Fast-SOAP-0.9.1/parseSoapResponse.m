@@ -1,34 +1,33 @@
 %
-% Matlab Fast SOAP - a faster Matlab replacement for the default SOAP
+% Matlab-Fast-SOAP - a faster Matlab replacement for the default SOAP
 % functions
 %   
-% parseSoapResponse, part of Matlab Fast SOAP
+% parseSoapResponse, part of Matlab-Fast-SOAP
 %
 
 %
 % Written by:
 % 
-% Edo Frederix
-% The Johns Hopkins University / Eindhoven University of Technology
-% Department of Mechanical Engineering
-% edofrederix@jhu.edu, edofrederix@gmail.com
+% Edo Frederix The Johns Hopkins University / Eindhoven University of
+% Technology Department of Mechanical Engineering edofrederix@jhu.edu,
+% edofrederix@gmail.com
 %
 
 %
-% This file is part of Matlab Fast SOAP.
+% This file is part of Matlab-Fast-SOAP.
 % 
-% Matlab Fast SOAP is free software: you can redistribute it and/or modify
+% Matlab-Fast-SOAP is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by the
 % Free Software Foundation, either version 3 of the License, or (at your
 % option) any later version.
 % 
-% Matlab Fast SOAP is distributed in the hope that it will be useful, but
+% Matlab-Fast-SOAP is distributed in the hope that it will be useful, but
 % WITHOUT ANY WARRANTY; without even the implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 % Public License for more details.
 % 
 % You should have received a copy of the GNU General Public License along
-% with Matlab Fast SOAP. If not, see <http://www.gnu.org/licenses/>.
+% with Matlab-Fast-SOAP. If not, see <http://www.gnu.org/licenses/>.
 %
 
 function s = parseSoapResponse(response)
@@ -72,8 +71,6 @@ function s = fetchXML(xml)
             fp1 = footprint(match{1});
             fp2 = footprint(match{2});
             if strcmp(fp1, fp2)
-                %xml
-                %error('nice');
                 sfp = swapStruct(regexpi(xml, fp1, 'names'));
                 if isfield(sfp, matches(1).tag)
                     s = mergeAll(s, sfp);
