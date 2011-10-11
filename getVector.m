@@ -39,40 +39,16 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
+function vector = getVector(s)
 
-function result = getForce(authToken,dataset,time,spatialInterpolation, ...
-                           temporalInterpolation,npoints, points)
-%
-%     Retrieve force for specified 'time' and 'points'
-%   
-%     Input:
-%       authToken = (string)
-%       dataset = (string)
-%       time = (float)
-%       spatialInterpolation = (string)
-%       temporalInterpolation = (string)
-%       npoints = (integer)
-%       points = (float array 3xN)
-%   
-%     Output:
-%       result = (float array 3xN)
-%      
+    if ~isstruct(s)
+        error('Did not receive a structure');
+    end
 
-
-if( size(points,1) ~= 3 || size(points,2) ~= npoints)
-    
-  error('Points not specified correctly.');
-
+    keys = fieldnames(s);
+    vector = zeros(numel(keys), numel(s.(keys{1})));
+    for i = 1:numel(keys)
+        key = keys{i};
+        vector(i,:) = transpose(s.(key)(:));
+    end
 end
-
-% Get the TurbulenceService object 
-obj = TurbulenceService;
-
-resultStruct =  GetForce (obj, authToken, dataset, time, ...
-		spatialInterpolation, ...
-		temporalInterpolation, ...
-		points);
-
-result = getVector(resultStruct.GetForceResult.Vector3);
-
-return

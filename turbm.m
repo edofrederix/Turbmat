@@ -1,6 +1,45 @@
 %
-% JHU Turbulence Database sample Matlab client code
+% Turbmat - a Matlab library for the JHU Turbulence Database Cluster
+%   
+% Sample code, part of Turbmat
 %
+
+%
+% Written by:
+%  
+% Jason Graham
+% The Johns Hopkins University
+% Department of Mechanical Engineering
+% jgraha8@gmail.com
+%
+
+%
+% Modified by:
+% 
+% Edo Frederix 
+% The Johns Hopkins University / Eindhoven University of Technology 
+% Department of Mechanical Engineering 
+% edofrederix@jhu.edu, edofrederix@gmail.com
+%
+
+%
+% This file is part of Turbmat.
+% 
+% Turbmat is free software: you can redistribute it and/or modify it under
+% the terms of the GNU General Public License as published by the Free
+% Software Foundation, either version 3 of the License, or (at your option)
+% any later version.
+% 
+% Turbmat is distributed in the hope that it will be useful, but WITHOUT
+% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+% FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+% more details.
+% 
+% You should have received a copy of the GNU General Public License along
+% with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
+%
+
+
 clear all;
 close all;
 
@@ -32,7 +71,7 @@ time = 0.002 * timestep;
 
 npoints = 10;
 
-points   = zeros(3,npoints);
+points = zeros(3,npoints);
 result1  = zeros(npoints);
 result3  = zeros(3,npoints);
 result4  = zeros(4,npoints);
@@ -42,12 +81,12 @@ result18 = zeros(18,npoints);
 
 %  Set spatial locations to sample
 for p = 1:npoints
-  points(1,p) = 0.20 * (p-1+1);
-  points(2,p) = 0.50 * (p-1+1);
-  points(3,p) = 0.15 * (p-1+1);
+  points(1,p) = 0.20 * p;
+  points(2,p) = 0.50 * p;
+  points(3,p) = 0.15 * p;
 end
 
-fprintf('\nRequesting velocity at 10 points...\n',npoints);
+fprintf('\nRequesting velocity at %i points...\n',npoints);
 result3 =  getVelocity (authkey, dataset, time, Lag6, NoTInt, npoints, points);
 for p = 1:npoints
   fprintf(1,'%i: %f, %f, %f\n', p, result3(1,p),  result3(2,p),  result3(3,p));
@@ -108,69 +147,41 @@ end
 %////////////////////////////////////////////////////////////
 
 %  Chose a random time step
-timestep = randi(182,1,1);
-time = 0.002 * timestep;
+time = 0.002 * randi(1024,1);
+spacing = 2.0*pi/1023;
 
-%  Set domain size
-nx = 32;
+% Set domain size and position
+nx = 64;
 ny = nx;
-
-dx = 2.0*pi/1024;
-dy = dx;
-
+xoff = 2*pi*rand; 
+yoff = 2*pi*rand;
+zoff = 2*pi*rand;
 npoints = nx*ny;
 
-points = zeros(3,npoints);
-result3 = zeros(3,npoints);
-result9 = zeros(9,npoints);
+clear points;
 
-% Choose x, y offset
-xoff = 2 * pi * rand; 
-yoff = 2 * pi * rand;
-
-indx=0;
-for j=1:ny
-  yt = dy*(j-1) + yoff;
-  for i=1:nx
-    indx=indx+1;
-    points(1,indx) = dx*(i-1) + xoff;
-    points(2,indx) = yt;
-  end
-end
-
-% Choose a random z-plane
-points(3,:) = 2 * pi * rand;
+% Create surface
+x = linspace(0, (nx-1)*spacing, nx) + xoff;
+y = linspace(0, (ny-1)*spacing, ny) + yoff;
+[X Y] = meshgrid(x, y);
+points(1:2,:) = [X(:)'; Y(:)'];
+points(3,:) = zoff;
     
 % Get the velocity at each point
 fprintf('\nRequesting velocity at %i points...\n',npoints);
-result3 =  getVelocity (authkey, dataset, time, Lag4, NoTInt, npoints, points);
+result3 = getVelocity(authkey, dataset, time, Lag4, NoTInt, npoints, points);
 
-x = (0.0:dx:(nx-1)*dx)+xoff;
-y = (0.0:dy:(ny-1)*dy)+yoff;
+% Calculate velocity magnitude
+z = sqrt(result3(1,:).^2 + result3(2,:).^2 + result3(3,:).^2);
+Z = transpose(reshape(z, nx, ny));
 
-[X Y] = meshgrid(x,y);
-
-%  Roll up velocity title({'Filled Contour Plot Using','contourf(Z,10)'}) 
-vel_mag = zeros(nx,ny);
-indx=0;
-for j=1:ny
-    for i=1:nx
-        indx=indx+1;
-        vel = result3(:,indx);
-        vel_mag(i,j) = sqrt(sum(vel.*vel));
-    end
-end
-
-clear result3;
-hold on
-%contourf(x,y,vel_mag,'LineStyle','none');
-Z = vel_mag;
-surfc(X,Y,Z);
-shading interp;
-title('Velocity Magnitude');
-xlabel('x');
-ylabel('y');
-colorbar;
-colormap Jet
-
+% Plot velocity magnitude contours
+contourf(X, Y, Z, 30, 'LineStyle', 'none');
+set(gca, 'FontSize', 11)
+title('Velocity magnitude', 'FontSize', 13, 'FontWeight', 'bold');
+xlabel('x', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('y', 'FontSize', 12, 'FontWeight', 'bold');
+colorbar('FontSize', 12);
+axis([xoff max(x) yoff max(y)]);
+set(gca, 'TickDir', 'out', 'TickLength', [.02 .02],'XMinorTick', 'on', 'YMinorTick', 'on');
 
