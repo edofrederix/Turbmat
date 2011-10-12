@@ -1,4 +1,4 @@
-Matlab Fast SOAP - a faster Matlab replacement for the default SOAP functions
+Matlab-Fast-SOAP - a faster Matlab replacement for the default SOAP functions
 See the end of the file for license conditions.
 
 Written by:
@@ -11,7 +11,7 @@ edofrederix@jhu.edu, edofrederix@gmail.com
 
 ---- Summary -----------------------------------------------------------------
 
-Matlab Fast SOAP is a library that replaces the original Matlab SOAP functions
+Matlab-Fast-SOAP is a library that replaces the original Matlab SOAP functions
 createSoapMessage(), callSoapService() and parseSoapResponse() with more
 efficient alternatives.
 
@@ -61,7 +61,8 @@ char message = createSoapMessage(char namespace, char method, struct data, ...
 
 createSoapMessage creates a SOAP message based on the values you provide for
 the arguments. 'message' is a character string, rathar than a Sun Java DOM. To
-send message to the Web service, use it with callSoapService. The arguments taken by createSoapMessage are:
+send message to the Web service, use it with callSoapService. The arguments
+taken by createSoapMessage are:
 
 namespace:  Location of the Web service in the form of a valid Uniform
             Resource Identifier (URI).
@@ -300,7 +301,7 @@ The resulting structure will look like (written out):
 ---- Example.m: test case ----------------------------------------------------
 
 This package comes with an example.m Matlab file. This example script nicely
-illustrates the power of Matlab Fast Soap.
+illustrates the power of Matlab-Fast-SOAP.
 
 The script connects to the Johns Hopkins University Turbulence Database
 Cluster. The JHU turbulence database provides access to a direct numerical
@@ -347,19 +348,22 @@ And the resulting structure will contain the vectors:
       duzdy: [65536x1 double]
       duzdz: [65536x1 double]
 
-Note: in order to perform large requests on the JHU turbulence database (more that 4096 points), you will need a different authentication token. Please visit http://turbulence.pha.jhu.edu/help/authtoken.html for more information on this.
+Note: in order to perform large requests on the JHU turbulence database (more
+that 4096 points), you will need a different authentication token. Please
+visit http://turbulence.pha.jhu.edu/help/authtoken.html for more information
+on this.
 
 
 ---- License -----------------------------------------------------------------
 
-This file is part of Matlab Fast SOAP.
+This file is part of Matlab-Fast-SOAP.
 
-Matlab Fast SOAP is free software: you can redistribute it and/or modify it
+Matlab-Fast-SOAP is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the Free
 Software Foundation, either version 3 of the License, or (at your option) any
 later version.
 
-Matlab Fast SOAP is distributed in the hope that it will be useful, but
+Matlab-Fast-SOAP is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 details.
