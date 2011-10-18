@@ -24,7 +24,19 @@
 
 function obj = TurbulenceService
 
-thisPath = regexprep(fileparts(which('TurbulenceService')), '/@TurbulenceService', '', 'ignorecase');
+% Method 1
+thisPath = regexprep(fileparts(which('TurbulenceService')),'@TurbulenceService', '', 'ignorecase');
+
+% Method 2
+% This method will also trim the dangling directory separator
+% if ispc
+%     dirSep='\';
+% else
+%     dirSep='/';
+% end
+% turbServ=sprintf('%s@TurbulenceService',dirSep);
+% thisPath = regexprep(fileparts(which('TurbulenceService')),turbServ, '', 'ignorecase');
+
 a = dir(thisPath);
 set = 0;
 for i = 1:numel(a)
