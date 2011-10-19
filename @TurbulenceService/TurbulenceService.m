@@ -24,7 +24,7 @@
 
 function obj = TurbulenceService
 
-thisPath = regexprep(fileparts(which('TurbulenceService')), '/@TurbulenceService', '', 'ignorecase');
+thisPath = regexprep(fileparts(which('TurbulenceService')), '@TurbulenceService', '', 'ignorecase');
 a = dir(thisPath);
 set = 0;
 for i = 1:numel(a)
