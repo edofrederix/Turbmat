@@ -24,7 +24,7 @@
 
 function obj = TurbulenceService
 
-thisPath = regexprep(fileparts(which('TurbulenceService')), '/@TurbulenceService', '', 'ignorecase');
+thisPath = regexprep(fileparts(which('TurbulenceService')), '@TurbulenceService', '', 'ignorecase');
 a = dir(thisPath);
 set = 0;
 for i = 1:numel(a)
@@ -44,3 +44,4 @@ obj.endpoint = 'http://turbulence.pha.jhu.edu/service/turbulence.asmx';
 obj.wsdl = 'http://turbulence.pha.jhu.edu/service/turbulence.asmx?WSDL';
 
 obj = class(obj,'TurbulenceService');
+
