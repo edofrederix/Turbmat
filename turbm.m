@@ -65,13 +65,11 @@ FD8NoInt = 'None_Fd8' ; % 8th order finite differential scheme for grid values, 
 FD4Lag4  = 'Fd4Lag4'  ; % 4th order finite differential scheme for grid values, 4th order Lagrangian interpolation in space
 
 %  Set time step to sample
-timestep = 182;
-dt = 0.002;
-time = timestep * dt;
+time = 0.364;
 
 % getPosition integration settings
-startTime=0.285657;
-endTime=0.295697;
+startTime=0.364;
+endTime=0.376;
 lagDt=0.0004; 
 
 npoints = 10;
@@ -89,6 +87,11 @@ for p = 1:npoints
   points(1,p) = 0.20 * p;
   points(2,p) = 0.50 * p;
   points(3,p) = 0.15 * p;
+end
+
+fprintf('\nCoordinates of 10 points where variables are requested:\n');
+for p = 1:npoints
+    fprintf(1,'%3i: %13.6e, %13.6e, %13.6e\n', p, points(1,p),  points(2,p),  points(3,p));
 end
 
 fprintf('\nRequesting velocity at %i points...\n',npoints);
@@ -150,6 +153,11 @@ end
 
 fprintf('\nRequesting position at %i points, starting at time %f and ending at time %f...\n',npoints,startTime,endTime);
 result3 = getPosition(authkey, dataset, startTime, endTime, lagDt, Lag6, 10, points);
+fprintf('\nCoordinates of 10 points at startTime:\n');
+for p = 1:npoints
+    fprintf(1,'%3i: %13.6e, %13.6e, %13.6e\n', p, points(1,p),  points(2,p),  points(3,p));
+end
+fprintf('\nCoordinates of 10 points at endTime:\n');
 for p = 1:npoints
   fprintf(1,'%3i: %13.6e, %13.6e, %13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
 end
