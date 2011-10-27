@@ -39,7 +39,7 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
-function result = getVelocityAndPressure(authToken,dataset,time,spatialInterpolation, ...
+function result = getVelocityAndPressure(authToken, dataset, time, spatialInterpolation, ...
                                          temporalInterpolation, npoints, points)
 %
 %     Retrieve velocity and pressure for specified 'time' and 'points'
