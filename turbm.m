@@ -140,15 +140,14 @@ end
 fprintf('\nRequesting pressure gradient at %i points...\n',npoints);
 result3 =  getPressureGradient (authkey, dataset, time, FD4Lag4, NoTInt, npoints, points);
 for p = 1:npoints
-  fprintf(1,'%3i: dpdx=%13.6e,dpdy=%13.6e,dpdz=%13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
+  fprintf(1,'%3i: dpdx=%13.6e, dpdy=%13.6e, dpdz=%13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
 end
 
 fprintf('\nRequesting pressure hessian at %i points...\n',npoints);
 result6 = getPressureHessian (authkey, dataset, time, FD4Lag4, NoTInt, npoints, points);
 for p = 1:npoints
-  fprintf(1,'%3i: d2pdxdx=%13.6e,d2pdxdy=%13.6e,d2pdxdz=%13.6e, d2pdydy=%13.6e, d2pdydz=%13.6e, d2pdzdz=%13.6e\n', p, ...
-    result6(1,p), result6(2,p), result6(3,p), ...
-    result6(4,p), result6(5,p), result6(6,p));
+  fprintf(1,'%3i: d2pdxdx=%13.6e, d2pdxdy=%13.6e, d2pdxdz=%13.6e, ', p, result6(1,p), result6(2,p), result6(3,p));
+  fprintf(1,'d2pdydy=%13.6e, d2pdydz=%13.6e, d2pdzdz=%13.6e\n', result6(4,p), result6(5,p), result6(6,p));
 end
 
 fprintf('\nRequesting position at %i points, starting at time %f and ending at time %f...\n',npoints,startTime,endTime);
