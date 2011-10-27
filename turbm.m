@@ -39,7 +39,6 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
-
 clear all;
 close all;
 
