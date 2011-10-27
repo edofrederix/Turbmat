@@ -188,7 +188,8 @@ points(1:2,:) = [X(:)'; Y(:)'];
 points(3,:) = zoff;
     
 % Get the velocity at each point
-fprintf('\nRequesting velocity at %i points...\n',npoints);
+%fprintf('\nRequesting velocity at %i points...\n',npoints);
+fprintf('\nRequesting velocity at (%ix%i) points for velocity contour plot...\n',nx,ny);
 result3 = getVelocity(authkey, dataset, time, Lag4, NoTInt, npoints, points);
 
 % Calculate velocity magnitude
