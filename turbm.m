@@ -45,9 +45,6 @@ close all;
 authkey = 'edu.jhu.pha.turbulence.testing-201104';
 dataset = 'isotropic1024coarse';
 
-% Generates TurbulenceService object
-%createClassFromWsdl('http://turbulence.pha.jhu.edu/service/turbulence.asmx?WSDL')
-
 % ---- Temporal Interpolation Options ----
 NoTInt   = 'None' ; % No temporal interpolation
 PCHIPInt = 'PCHIP'; % Piecewise cubic Hermit interpolation in time
