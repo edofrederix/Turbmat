@@ -33,7 +33,7 @@
 function GetPositionResult = GetPosition(obj,authToken,dataset,StartTime,EndTime,dt,spatialInterpolation,points)
 %GetPosition(obj,authToken,dataset,StartTime,EndTime,dt,spatialInterpolation,points)
 %
-%   FluidParticleTracking
+%   Track fluid particles along Lagrangian trajectories
 %   
 %     Input:
 %       authToken = (string)
