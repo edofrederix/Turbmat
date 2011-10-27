@@ -91,12 +91,6 @@ for p = 1:npoints
   points(3,p) = 0.15 * p;
 end
 
-fprintf('\nRequesting position at %i points, starting at time %f and ending at time %f...\n',npoints,startTime,endTime);
-result3 = getPosition(authkey, dataset, startTime, endTime, lagDt, Lag6, 10, points);
-for p = 1:npoints
-  fprintf(1,'%3i: %13.6e, %13.6e, %13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
-end
-
 fprintf('\nRequesting velocity at %i points...\n',npoints);
 result3 =  getVelocity (authkey, dataset, time, Lag6, NoTInt, npoints, points);
 for p = 1:npoints
@@ -152,6 +146,12 @@ for p = 1:npoints
   fprintf(1,'%3i: d2pdxdx=%13.6e,d2pdxdy=%13.6e,d2pdxdz=%13.6e, d2pdydy=%13.6e, d2pdydz=%13.6e, d2pdzdz=%13.6e\n', p, ...
     result6(1,p), result6(2,p), result6(3,p), ...
     result6(4,p), result6(5,p), result6(6,p));
+end
+
+fprintf('\nRequesting position at %i points, starting at time %f and ending at time %f...\n',npoints,startTime,endTime);
+result3 = getPosition(authkey, dataset, startTime, endTime, lagDt, Lag6, 10, points);
+for p = 1:npoints
+  fprintf(1,'%3i: %13.6e, %13.6e, %13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
 end
 
 % ///////////////////////////////////////////////////////////
