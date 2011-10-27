@@ -39,8 +39,8 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
-function result = getPressureGradient(authToken,dataset,time,spatialInterpolation, ...
-                                      temporalInterpolation,npoints, points)			     
+function result = getPressureGradient(authToken, dataset, time, spatialInterpolation, ...
+                                      temporalInterpolation, npoints, points)			     
 %
 %     Retrieve pressure gradient for specified 'time' and 'points'
 %   
@@ -56,7 +56,6 @@ function result = getPressureGradient(authToken,dataset,time,spatialInterpolatio
 %     Output:
 %       result = (float array 9xN)
 %      
-
 
 if( size(points,1) ~= 3 || size(points,2) ~= npoints)
     
