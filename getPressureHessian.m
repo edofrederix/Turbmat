@@ -39,8 +39,8 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
-function result = getPressureHessian(authToken,dataset,time,spatialInterpolation, ...
-                                     temporalInterpolation,npoints, points)			     
+function result = getPressureHessian(authToken, dataset, time, spatialInterpolation, ...
+                                     temporalInterpolation, npoints, points)			     
 %
 %     Retrieve pressure hessian for specified 'time' and 'points'
 %   

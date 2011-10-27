@@ -39,8 +39,8 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
-function result = getVelocityGradient(authToken,dataset,time,spatialInterpolation, ...
-                                      temporalInterpolation,npoints, points)			     
+function result = getVelocityGradient(authToken, dataset, time, spatialInterpolation, ...
+                                      temporalInterpolation, npoints, points)			     
 %
 %     Retrieve velocity gradient for specified 'time' and 'points'
 %   

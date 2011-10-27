@@ -39,8 +39,8 @@
 % with Turbmat.  If not, see <http://www.gnu.org/licenses/>.
 %
 
-function result = getVelocityHessian(authToken,dataset,time,spatialInterpolation, ...
-                                     temporalInterpolation,npoints, points)
+function result = getVelocityHessian(authToken, dataset, time, spatialInterpolation, ...
+                                     temporalInterpolation, npoints, points)
 %
 %     Retrieve velocity hessian for specified 'time' and 'points'
 %   
