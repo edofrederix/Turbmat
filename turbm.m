@@ -127,7 +127,7 @@ end
 fprintf('\nRequesting velocity hessian at %i points...\n',npoints);
 result18 = getVelocityHessian (authkey, dataset, time, FD4Lag4, NoTInt, npoints, points);
 for p = 1:npoints
-  fprintf(1,'%i: d2uxdxdx=%13.6e, d2uxdxdy=%13.6e, d2uxdxdz=%13.6e, ', p, result18(1,p), result18(2,p), result18(3,p));
+  fprintf(1,'%3i: d2uxdxdx=%13.6e, d2uxdxdy=%13.6e, d2uxdxdz=%13.6e, ', p, result18(1,p), result18(2,p), result18(3,p));
   fprintf(1,'d2uxdydy=%13.6e, d2uxdydz=%13.6e, d2uxdzdz=%13.6e, ', result18(4,p), result18(5,p), result18(6,p));
   fprintf(1,'d2uydxdx=%13.6e, d2uydxdy=%13.6e, d2uydxdz=%13.6e, ', result18(7,p), result18(8,p), result18(9,p));
   fprintf(1,'d2uydydy=%13.6e, d2uydydz=%13.6e, d2uydzdz=%13.6e, ', result18(10,p), result18(11,p), result18(12,p));
@@ -138,19 +138,19 @@ end
 fprintf('\nRequesting velocity laplacian at %i points...\n',npoints);
 result3 =  getVelocityLaplacian (authkey, dataset, time, FD4Lag4, NoTInt, npoints, points);
 for p = 1:npoints
-  fprintf(1,'%i: grad2ux=%13.6e, grad2uy=%13.6e, grad2uz=%13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
+  fprintf(1,'%3i: grad2ux=%13.6e, grad2uy=%13.6e, grad2uz=%13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
 end
 
 fprintf('\nRequesting pressure gradient at %i points...\n',npoints);
 result3 =  getPressureGradient (authkey, dataset, time, FD4Lag4, NoTInt, npoints, points);
 for p = 1:npoints
-  fprintf(1,'%i: dpdx=%13.6e,dpdy=%13.6e,dpdz=%13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
+  fprintf(1,'%3i: dpdx=%13.6e,dpdy=%13.6e,dpdz=%13.6e\n', p, result3(1,p),  result3(2,p),  result3(3,p));
 end
 
 fprintf('\nRequesting pressure hessian at %i points...\n',npoints);
 result6 = getPressureHessian (authkey, dataset, time, FD4Lag4, NoTInt, npoints, points);
 for p = 1:npoints
-  fprintf(1,'%i: d2pdxdx=%13.6e,d2pdxdy=%13.6e,d2pdxdz=%13.6e, d2pdydy=%13.6e, d2pdydz=%13.6e, d2pdzdz=%13.6e\n', p, ...
+  fprintf(1,'%3i: d2pdxdx=%13.6e,d2pdxdy=%13.6e,d2pdxdz=%13.6e, d2pdydy=%13.6e, d2pdydz=%13.6e, d2pdzdz=%13.6e\n', p, ...
     result6(1,p), result6(2,p), result6(3,p), ...
     result6(4,p), result6(5,p), result6(6,p));
 end
