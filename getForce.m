@@ -40,8 +40,8 @@
 %
 
 
-function result = getForce(authToken,dataset,time,spatialInterpolation, ...
-                           temporalInterpolation,npoints, points)
+function result = getForce(authToken, dataset, time, spatialInterpolation, ...
+                           temporalInterpolation, npoints, points)
 %
 %     Retrieve force for specified 'time' and 'points'
 %   
@@ -57,7 +57,6 @@ function result = getForce(authToken,dataset,time,spatialInterpolation, ...
 %     Output:
 %       result = (float array 3xN)
 %      
-
 
 if( size(points,1) ~= 3 || size(points,2) ~= npoints)
     
